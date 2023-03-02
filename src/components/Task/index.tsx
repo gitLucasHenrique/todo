@@ -11,7 +11,7 @@ interface TaskProps {
 
 export default function Task(props: TaskProps) {
     return (
-        <View style={styles.toDoCards}>
+        <View style={(props.task.done) ? styles.doneCards : styles.toDoCards }>
             <TouchableOpacity style={{ flex: 1, alignItems: 'center' }} onPress={() => props.onComplete(props.task)}>
                 <Text>
                     {
@@ -23,7 +23,7 @@ export default function Task(props: TaskProps) {
                     }
                 </Text>
             </TouchableOpacity>
-            <Text style={styles.toDoCardText}>
+            <Text style={(props.task.done) ? styles.doneCardText : styles.toDoCardText }>
                 {props.task.content}
             </Text>
             <TouchableOpacity style={{ flex: 1, alignItems: 'center' }} onPress={() => props.onRemove(props.task.id)}>
